@@ -6,6 +6,7 @@ import com.library.bd.DBproject.repository.models.Copy;
 import com.library.bd.DBproject.service.BookService;
 import com.library.bd.DBproject.service.CopyService;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +43,7 @@ public class BookController {
     }
 
     @GetMapping("/{bookId}")
-    public ResponseEntity<BookDetailsResponse> getBookDetails(@PathVariable String bookId) {
+    public ResponseEntity<BookDetailsResponse> getBookDetails(@PathVariable(required = false) String bookId) {
         Book book = bookService.getBookById(bookId)
                 .orElseThrow(() -> new RuntimeException("Книга не найдена"));
 
