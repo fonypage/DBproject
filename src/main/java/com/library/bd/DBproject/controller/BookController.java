@@ -35,7 +35,7 @@ public class BookController {
     @GetMapping("/search")
     public ResponseEntity<List<Book>> searchBooks(@RequestParam(required = false) String title, @RequestParam(required = false) String author, @RequestParam(required = false) String genre) {
         List<Book>books=bookService.searchBooks(title,author,genre);
-        return new ResponseEntity<>(books,HttpStatus.OK);
+        return !books.isEmpty() ? new ResponseEntity<>(books,HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
 //        return bookService.findBooksByTitle(title)
 //                .map(books -> new ResponseEntity<>(books, HttpStatus.OK))
 //                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
