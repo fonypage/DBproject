@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CopyServiceImpl {
+public class CopyServiceImpl implements CopyService {
     private final CopyRepository copyRepository;
 
     public List<Copy> getCopiesByBookId(String bookId) {
