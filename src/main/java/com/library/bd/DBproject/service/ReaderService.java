@@ -7,4 +7,7 @@ import java.util.Optional;
 
 public interface ReaderService  {
     Optional<Reader> findReaderByFullName(String lastName, String firstName, String middleName);
+
+    Reader createReader(Reader reader);
+
 }

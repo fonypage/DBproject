@@ -17,4 +17,9 @@ public class ReaderServiceImpl implements ReaderService{
     public Optional<Reader> findReaderByFullName(String lastName, String firstName, String middleName) {
         return readerRepository.findByLastNameAndFirstNameAndMiddleName(lastName,firstName,middleName);
     }
+
+    @Override
+    public Reader createReader(Reader reader) {
+        return readerRepository.save(reader);
+    }
 }
