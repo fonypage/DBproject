@@ -3,6 +3,7 @@ package com.library.bd.DBproject.service;
 import com.library.bd.DBproject.repository.BookRepository;
 import com.library.bd.DBproject.repository.models.Book;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void deleteBook(String id) {
+    public void deleteBook(ObjectId id) {
         bookRepository.deleteById(id);
     }
 

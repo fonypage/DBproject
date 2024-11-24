@@ -53,7 +53,7 @@ public class BookController {
 
     @DeleteMapping("/{bookId}/delete")
     public ResponseEntity<?> deleteBook(@PathVariable String bookId){
-        bookService.deleteBook(bookId);
+        bookService.deleteBook(new ObjectId(bookId));
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

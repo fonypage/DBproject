@@ -1,6 +1,7 @@
 package com.library.bd.DBproject.service;
 
 import com.library.bd.DBproject.repository.models.Book;
+import org.bson.types.ObjectId;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,5 +15,5 @@ public interface BookService {
 
     List<Book> searchBooks(String title, String author, String genre);
      Optional<Book> getBookById(String bookId);
-     void deleteBook(String id);
+     void deleteBook(ObjectId id);
 }
