@@ -28,6 +28,11 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findBooksByTitleContainsIgnoreCase(title);
     }
 
+    @Override
+    public void deleteBook(String id) {
+        bookRepository.deleteById(id);
+    }
+
     public List<Book> searchBooks(String title, String author, String genre) {
         if ((title == null || title.isEmpty()) &&
                 (author == null || author.isEmpty()) &&

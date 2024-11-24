@@ -21,13 +21,13 @@ public class BookController {
     private final CopyService copyService;
 
 
-    @PostMapping //todo
+    @PostMapping("/form/new")
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
         Book createdBook = bookService.createBook(book);
         return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
     }
 
-    @GetMapping //todo
+    @GetMapping
     public ResponseEntity<List<Book>> getAllBooks() {
         List<Book> books = bookService.getAllBooks();
         return new ResponseEntity<>(books, HttpStatus.OK);
@@ -49,5 +49,11 @@ public class BookController {
 
         List<Copy> copies = copyService.getCopiesByBookId(bookId);
         return ResponseEntity.ok(new BookDetailsResponse(book, copies));
+    }
+
+    @DeleteMapping("/{bookId}/delete")
+    public ResponseEntity<?> deleteBook(@PathVariable String bookId){
+        bookService.deleteBook(bookId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

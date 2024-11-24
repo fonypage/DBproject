@@ -24,7 +24,7 @@ public class ReaderController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping(value = "/new")
+    @PostMapping(value = "/form/new")
     public ResponseEntity<?> createReader(@RequestBody Reader reader){
         Reader savedReader = readerService.createReader(reader);
         return new ResponseEntity<>(savedReader,HttpStatus.CREATED);
