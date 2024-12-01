@@ -29,7 +29,7 @@ public class ReaderController {
     @PostMapping(value = "/form/new")
     public ResponseEntity<?> createReader(@RequestBody Reader reader){
         Integer idValue=readerRepository.findAll().size();
-        reader.setId_(idValue);
+        reader.setId_(idValue+1);
         Reader savedReader = readerService.createReader(reader);
         return new ResponseEntity<>(savedReader,HttpStatus.CREATED);
     }

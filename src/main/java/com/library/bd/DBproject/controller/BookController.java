@@ -25,7 +25,7 @@ public class BookController {
     @PostMapping("/form/new")
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
         Integer IdValue=bookService.getAllBooks().size() ;
-        book.setId_(IdValue);
+        book.setId_(IdValue+1);
         Book createdBook = bookService.createBook(book);
         return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
     }
