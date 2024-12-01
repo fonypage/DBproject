@@ -18,7 +18,7 @@ public class IssueController {
     private final IssueService issueService;
 
     @PostMapping("/borrow")
-    public ResponseEntity<?> borrowBook(@RequestParam String readerId,@RequestParam String copyId){
+    public ResponseEntity<?> borrowBook(@RequestParam Integer readerId,@RequestParam Integer copyId){
         try {
             Issue issue = issueService.borrowBook(readerId, copyId);
             return new ResponseEntity<>(issue, HttpStatus.CREATED);

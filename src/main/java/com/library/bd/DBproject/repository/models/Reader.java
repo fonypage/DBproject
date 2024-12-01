@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Reader {
     @Id
     private ObjectId id;
+    private Integer id_;
     private String lastName;
     private String firstName;
     private String middleName;

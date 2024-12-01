@@ -1,5 +1,6 @@
 package com.library.bd.DBproject.controller;
 
+import com.library.bd.DBproject.repository.ReaderRepository;
 import com.library.bd.DBproject.repository.models.Reader;
 import com.library.bd.DBproject.service.ReaderService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ReaderController {
     private final ReaderService readerService;
+    private final ReaderRepository readerRepository;
 
     @GetMapping(value = "/search")
     public ResponseEntity<Reader> findReader(
@@ -26,6 +28,8 @@ public class ReaderController {
 
     @PostMapping(value = "/form/new")
     public ResponseEntity<?> createReader(@RequestBody Reader reader){
+        Integer idValue=readerRepository.findAll().size();
+        reader.setId_(idValue);
         Reader savedReader = readerService.createReader(reader);
         return new ResponseEntity<>(savedReader,HttpStatus.CREATED);
     }

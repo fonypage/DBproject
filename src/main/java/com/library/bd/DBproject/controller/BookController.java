@@ -21,8 +21,11 @@ public class BookController {
     private final CopyService copyService;
 
 
+
     @PostMapping("/form/new")
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
+        Integer IdValue=bookService.getAllBooks().size() ;
+        book.setId_(IdValue);
         Book createdBook = bookService.createBook(book);
         return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
     }
@@ -43,7 +46,7 @@ public class BookController {
     }
 
     @GetMapping("/{bookId}")
-    public ResponseEntity<BookDetailsResponse> getBookDetails(@PathVariable(required = false) String bookId) {
+    public ResponseEntity<BookDetailsResponse> getBookDetails(@PathVariable(required = false) Integer bookId) {
         Book book = bookService.getBookById(bookId)
                 .orElseThrow(() -> new RuntimeException("Книга не найдена"));
 
@@ -52,8 +55,8 @@ public class BookController {
     }
 
     @DeleteMapping("/{bookId}/delete")
-    public ResponseEntity<?> deleteBook(@PathVariable String bookId){
-        bookService.deleteBook(new ObjectId(bookId));
+    public ResponseEntity<?> deleteBook(@PathVariable Integer bookId){
+        bookService.deleteBook(bookId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

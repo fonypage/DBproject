@@ -6,6 +6,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CopyService {
-    List<Copy> getCopiesByBookId(String bookId);
-    Optional<Copy> getCopyById(String copyId);
+    List<Copy> getCopiesByBookId(Integer bookId);
+    Optional<Copy> getCopyById(Integer copyId);
 }

@@ -14,6 +14,6 @@ public interface BookService {
     Optional<List<Book>> findBooksByTitle(String title);
 
     List<Book> searchBooks(String title, String author, String genre);
-     Optional<Book> getBookById(String bookId);
-     void deleteBook(ObjectId id);
+     Optional<Book> getBookById(Integer bookId);
+     void deleteBook(Integer id);
 }

@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IssueRepository extends MongoRepository<Issue, String> {
-    boolean existsByCopyIdAndReturnDateIsNull(ObjectId copyId);
+//    boolean existsByCopyIdAndReturnDateIsNull(Integer copyId);
 }
 

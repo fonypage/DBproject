@@ -10,7 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Copy {
     @Id
     private ObjectId id;
-    private ObjectId bookId; // Связь с книгой
+    private Integer id_;
+    private ObjectId bookId;
+    private Integer bookId_;
     private String location;
 }
 

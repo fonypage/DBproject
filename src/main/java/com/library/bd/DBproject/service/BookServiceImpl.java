@@ -30,8 +30,14 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void deleteBook(ObjectId id) {
-        bookRepository.deleteById(id);
+    public void deleteBook(Integer id) {
+        Optional<Book> book = bookRepository.findById_(id);
+        if (book.isPresent()) {
+            Book now=book.get();
+            bookRepository.delete(now);
+        } else {
+            throw new RuntimeException("Book not found with id: " + id);
+        }
     }
 
     public List<Book> searchBooks(String title, String author, String genre) {
@@ -47,7 +53,7 @@ public class BookServiceImpl implements BookService {
                 genre != null ? genre : ""
         );
     }
-    public Optional<Book> getBookById(String bookId) {
-        return bookRepository.findById(bookId);
+    public Optional<Book> getBookById(Integer bookId) {
+       return bookRepository.findById_(bookId);
     }
 }

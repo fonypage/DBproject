@@ -14,13 +14,12 @@ import java.util.Optional;
 public class CopyServiceImpl implements CopyService {
     private final CopyRepository copyRepository;
 
-    public List<Copy> getCopiesByBookId(String bookId) {
-        ObjectId objectId = new ObjectId(bookId);
-        return copyRepository.findByBookId(objectId);
+    public List<Copy> getCopiesByBookId(Integer bookId) {
+        return copyRepository.findByBookId(bookId);
     }
 
     @Override
-    public Optional<Copy> getCopyById(String copyId) {
-        return copyRepository.getCopyById(new ObjectId(copyId));
+    public Optional<Copy> getCopyById(Integer copyId) {
+        return copyRepository.getCopyById((copyId));
     }
 }

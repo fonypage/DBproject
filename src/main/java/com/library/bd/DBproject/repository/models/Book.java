@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Book {
     @Id
     private ObjectId id;
+    private  Integer id_;
     private String author;
     private String title;
     private String genre;
