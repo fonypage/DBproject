@@ -10,6 +10,8 @@ public interface BookService {
     Book createBook(Book book);
 
    List<Book> getAllBooks();
+    List<Book> getBooksByReaderId(Integer readerId);
+
 
     Optional<List<Book>> findBooksByTitle(String title);
 
