@@ -23,6 +23,7 @@ public class IssueServiceImpl implements IssueService{
 
         Issue issue = new Issue();
         issue.setReaderId_(readerId);
+        issue.setId_(idValue+1);
         issue.setCopyId_(copyId);
         issue.setBorrowDate(LocalDate.now());
         issue.setReturnDate(null);

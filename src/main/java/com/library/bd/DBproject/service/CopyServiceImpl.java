@@ -17,6 +17,9 @@ public class CopyServiceImpl implements CopyService {
     public List<Copy> getCopiesByBookId(Integer bookId) {
         return copyRepository.findByBookId(bookId);
     }
+    public Copy createCopy(Copy copy){
+        return copyRepository.save(copy);
+    }
 
     @Override
     public Optional<Copy> getCopyById(Integer copyId) {

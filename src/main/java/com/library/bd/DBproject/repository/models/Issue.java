@@ -13,6 +13,7 @@ import java.time.LocalDate;
 public class Issue {
     @Id
     private ObjectId id;
+    private Integer id_;
     private Integer readerId_;
     private Integer copyId_;
     private LocalDate borrowDate;
