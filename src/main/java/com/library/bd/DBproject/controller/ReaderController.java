@@ -6,6 +6,7 @@ import com.library.bd.DBproject.repository.ReaderRepository;
 import com.library.bd.DBproject.repository.models.Book;
 import com.library.bd.DBproject.repository.models.Reader;
 import com.library.bd.DBproject.service.BookService;
+import com.library.bd.DBproject.service.IssueService;
 import com.library.bd.DBproject.service.ReaderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,8 @@ public class ReaderController {
     private final ReaderService readerService;
     private final ReaderRepository readerRepository;
     private final BookService bookService;
+
+    private final IssueService issueService;
 
     @GetMapping(value = "/search")
     public ResponseEntity<BookReader> findReader(
@@ -42,6 +45,21 @@ public class ReaderController {
         reader.setId_(idValue+1);
         Reader savedReader = readerService.createReader(reader);
         return new ResponseEntity<>(savedReader,HttpStatus.CREATED);
+    }
+    @DeleteMapping("/{readerId}/books/{bookId}")
+    public ResponseEntity<?> returnBookFromReader(@PathVariable Integer readerId, @PathVariable Integer bookId) {
+        // проверяем, существует ли читатель
+        readerService.findReaderById_(readerId)
+                .orElseThrow(() -> new RuntimeException("Reader not found with id: " + readerId));
+
+        // проверяем, существует ли книга
+        bookService.getBookById(bookId)
+                .orElseThrow(() -> new RuntimeException("Book not found with id: " + bookId));
+
+        // Возвращаем книгу (удаляем Issue)
+        issueService.returnBook(readerId, bookId);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

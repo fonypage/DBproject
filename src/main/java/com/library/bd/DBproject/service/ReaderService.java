@@ -10,4 +10,6 @@ public interface ReaderService  {
 
     Reader createReader(Reader reader);
 
+    Optional<Reader>findReaderById_(Integer id);
+
 }

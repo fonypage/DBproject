@@ -22,4 +22,10 @@ public class ReaderServiceImpl implements ReaderService{
     public Reader createReader(Reader reader) {
         return readerRepository.save(reader);
     }
+
+    @Override
+    public Optional<Reader> findReaderById_(Integer id) {
+        return readerRepository.findReaderById_(id);
+    }
+
 }
